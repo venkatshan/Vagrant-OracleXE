@@ -7,8 +7,8 @@ Vagrant.configure(2) do |config|
     dev1.vm.network "forwarded_port", guest: 1521, host: 1522, id: "oracle"
     dev1.vm.provision "shell", path: "ora-provision.sh"
     dev1.vm.provider :virtualbox do |vb|
-      vb.customize ["modifyvm", :id, "--memory", "4096"]
-      vb.customize ["modifyvm", :id, "--cpus", "2"]
+      vb.customize ["modifyvm", :id, "--memory", "1024"]
+      vb.customize ["modifyvm", :id, "--cpus", "1"]
     end
     config.vm.synced_folder "./", "/vagrant", disabled: true
     config.vm.synced_folder "./installs", "/pcinstalls"

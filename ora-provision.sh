@@ -9,9 +9,9 @@ sudo rm -rf /dev/shm
 sudo mkdir /dev/shm
 sudo mount -t tmpfs shmfs -o size=1500m /dev/shm
 
-#cp /pcinstalls/oracle-xe-11.2.0-1.0.x86_64.rpm.zip /tmp
-cp /pcinstalls/oracle-xe_11.2.0-2_amd64.deb /tmp
 
+
+# -- uninstall oracle-xe
 #sudo /etc/init.d/oracle-xe stop
 #sudo ps -ef | grep oracle | grep -v grep | awk '{print $2}' | xargs kill
 #sudo dpkg --purge oracle-xe
@@ -21,15 +21,20 @@ cp /pcinstalls/oracle-xe_11.2.0-2_amd64.deb /tmp
 
 #exit 0
 
+
 cd /tmp
+wget https://www.dropbox.com/s/6zu6wj26du720ef/oracle-xe_11.2.0-2_amd64.deb?raw=1 -O oracle-xe_11.2.0-2_amd64.deb
+
+#---- RPM to DEB
+#-- [pcinstalls] - windows share
+#cp /pcinstalls/oracle-xe-11.2.0-1.0.x86_64.rpm.zip /tmp
+#cp /pcinstalls/oracle-xe_11.2.0-2_amd64.deb /tmp
 
 #unzip oracle-xe-11.2.0-1.0.x86_64.rpm.zip
-
 #rm oracle-xe-11.2.0-1.0.x86_64.rpm.zip
 
-cd Disk1
-
-echo "Converting rpm to deb ... may take a while"
+#cd Disk1
+#echo "Converting rpm to deb ... may take a while"
 #sudo alien --scripts -d oracle-xe-11.2.0-1.0.x86_64.rpm
 
 
@@ -54,7 +59,7 @@ touch /var/lock/subsys/listener
 
 sudo dpkg --install oracle-xe_11.2.0-2_amd64.deb
 
-dos2unix /pcinstalls/xe.rsp
+
 
 export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
 export ORACLE_SID=XE
@@ -63,15 +68,11 @@ export ORACLE_BASE=/u01/app/oracle
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
 export PATH=$ORACLE_HOME/bin:$PATH
 
+dos2unix /pcinstalls/bashrc
 sudo cat /pcinstalls/bashrc >> ~/.bashrc
 
-exit 0
-
+dos2unix /pcinstalls/xe.rsp
 sudo /etc/init.d/oracle-xe configure responseFile=/pcinstalls/xe.rsp
-
-dos2unix /pcinstalls/bashrc
-
-
 
 
 sudo service oracle-xe start
