@@ -1,10 +1,20 @@
 #!/bin/bash
 
-sudo apt-get update -y
+#sudo apt-get update -y
 
-sudo apt-get install alien libaio1 unixodbc vim -y
-sudo apt-get install unzip dos2unix -y
+#sudo apt-get install alien libaio1 unixodbc vim -y
+#sudo apt-get install unzip dos2unix -y
 cp /pcinstalls/oracle-xe-11.2.0-1.0.x86_64.rpm.zip /tmp
+
+
+#sudo /etc/init.d/oracle-xe stop
+#sudo ps -ef | grep oracle | grep -v grep | awk '{print $2}' | xargs kill
+#sudo dpkg --purge oracle-xe
+#sudo rm -rf /u01
+#sudo rm -rf /etc/default/oracle-xe
+#sudo update-rc.d -f oracle-xe remove
+
+#exit 0
 
 cd /tmp
 
