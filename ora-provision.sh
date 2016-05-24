@@ -8,8 +8,12 @@ sudo apt-get install unzip dos2unix -y
 sudo rm -rf /dev/shm
 sudo mkdir /dev/shm
 sudo mount -t tmpfs shmfs -o size=1500m /dev/shm
+sudo cp /pcinstalls/startoracle.sh /etc/
+sudo chmod +x /etc/startoracle.sh
 
-
+command="/etc/startoracle.sh"
+job="@Reboot $command"
+sudo cat <(fgrep -i -v "$command" <(crontab -l)) <(echo "$job") | crontab -
 
 # -- uninstall oracle-xe
 #sudo /etc/init.d/oracle-xe stop
