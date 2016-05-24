@@ -13,3 +13,4 @@ echo '# Short-Description: Oracle 11g Express Edition' >> $file
 echo '### END INIT INFO' >> $file
 fi
 update-rc.d oracle-xe defaults 80 01
+#EOF
