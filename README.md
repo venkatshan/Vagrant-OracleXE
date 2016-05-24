@@ -10,7 +10,8 @@ This is a [Vagrant](http://www.vagrantup.com) Ubuntu/Trusty64, oracle-xe provisi
 5. Set appropriate password for oracle in installs/xe.resp
    ```
     ORACLE_PASSWORD=
-    ORACLE_CONFIRM_PASSWORD= ```
+    ORACLE_CONFIRM_PASSWORD= 
+    ```
 6. Run "vagrant up" inside the cloned folder
 
 ## Default config
