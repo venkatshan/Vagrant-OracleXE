@@ -29,20 +29,19 @@ sudo chmod 755 /etc/rc2.d/S01shm_load
 
 
 cd /tmp
-wget https://www.dropbox.com/s/6zu6wj26du720ef/oracle-xe_11.2.0-2_amd64.deb?raw=1 -O oracle-xe_11.2.0-2_amd64.deb
+#wget https://www.dropbox.com/s/6zu6wj26du720ef/oracle-xe_11.2.0-2_amd64.deb?raw=1 -O oracle-xe_11.2.0-2_amd64.deb
 
 #---- RPM to DEB
 #-- [pcinstalls] - windows share
-#cp /pcinstalls/oracle-xe-11.2.0-1.0.x86_64.rpm.zip /tmp
+cp /pcinstalls/oracle-xe-11.2.0-1.0.x86_64.rpm.zip /tmp
+unzip oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+rm oracle-xe-11.2.0-1.0.x86_64.rpm.zip
+
+cd Disk1
+echo "Converting rpm to deb ... may take a while"
+sudo alien --scripts -d oracle-xe-11.2.0-1.0.x86_64.rpm
+
 #cp /pcinstalls/oracle-xe_11.2.0-2_amd64.deb /tmp
-
-#unzip oracle-xe-11.2.0-1.0.x86_64.rpm.zip
-#rm oracle-xe-11.2.0-1.0.x86_64.rpm.zip
-
-#cd Disk1
-#echo "Converting rpm to deb ... may take a while"
-#sudo alien --scripts -d oracle-xe-11.2.0-1.0.x86_64.rpm
-
 
 
 dos2unix /pcinstalls/checkconfig.txt
